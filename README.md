@@ -14,7 +14,7 @@ Setup
 
 FAQ
 ======================
-**Q:** Why does it have a logging feature to the roles? 
+**Q:** Why does it have a logging feature for the roles? 
 
 **A:** Why the hell not.. lmfao 
 
