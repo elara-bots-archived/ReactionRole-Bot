@@ -13,7 +13,6 @@ const Hook = async (hook, data) => {
     if(!h[0]) return null;
     if(!h[1]) return null;
     let Hook = new WebhookClient(h[0], h[1]);
-    if(!Hook) return null;
     if(data.status === "Success"){
     Hook.send({embeds: [
         {
@@ -108,15 +107,15 @@ class Reactions extends Client{
                                 type: "Removed",
                                 role: role,
                                 emoji: event.d.emoji.id ? this.emojis.cache.get(event.d.emoji.id) : event.d.emoji
-                            })
+                            });
                         }).catch((error) => {
                             Hook(config.logging.webhook, {
                                 status: "Failed",
                                 user: member.user,
                                 reason: error.stack,
                                 type: "remove"
-                            })
-                        })
+                            });
+                        });
                     }else{
                         member.roles.add(role.id).then(() => {
                             Hook(config.logging.webhook, {
@@ -125,15 +124,15 @@ class Reactions extends Client{
                                 type: "Added",
                                 role: role,
                                 emoji: event.d.emoji.id ? this.emojis.cache.get(event.d.emoji.id) : event.d.emoji
-                            })
+                            });
                         }).catch(() => {
                             Hook(config.logging.webhook, {
                                 status: "Failed",
                                 user: member.user,
                                 reason: error.stack,
                                 type: "added"
-                            })
-                        })
+                            });
+                        });
                     }
                 }
              }   
